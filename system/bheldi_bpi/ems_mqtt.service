@@ -1,0 +1,18 @@
+[Unit]
+Description=Mqtt Publisher Parsa
+After=multi-user.target
+
+[Service]
+Type=simple
+Environment=SERVER_ADDRESS="3.6.63.92"
+Environment=SERVER_PORT=1883
+Environment=MESSAGE=Bheldi_mqtt
+Environment=PYTHONPATH=/home/pi/ems/sqlite
+
+WorkingDirectory=/home/pi/ems/mqtt
+ExecStart=/usr/bin/python3 MqttProcess.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

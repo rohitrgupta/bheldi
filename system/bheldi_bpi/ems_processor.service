@@ -1,0 +1,15 @@
+[Unit]
+Description=EMS Processor Parsa
+After=multi-user.target
+
+[Service]
+Type=simple
+Environment=SITE=Bheldi
+Environment=PYTHONPATH=/home/pi/ems/sqlite
+WorkingDirectory=/home/pi/ems/processor
+ExecStart=/usr/bin/python3 Processor.py Bheldi
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

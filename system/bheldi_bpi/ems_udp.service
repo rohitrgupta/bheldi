@@ -1,0 +1,18 @@
+[Unit]
+Description=UDP Publisher Bheldi
+After=multi-user.target
+
+[Service]
+Type=simple
+Environment=SERVER_ADDRESS="taraurja.in"
+Environment=SERVER_PORT=8102
+Environment=MESSAGE=Bheldi_udp
+Environment=PYTHONPATH=/home/pi/ems/sqlite
+
+WorkingDirectory=/home/pi/ems/udp
+ExecStart=/usr/bin/python3 UdpProcessNoOffline.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

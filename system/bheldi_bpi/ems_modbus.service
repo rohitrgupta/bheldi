@@ -1,0 +1,17 @@
+[Unit]
+Description=MODBUS Master Parsa
+After=multi-user.target
+
+[Service]
+Type=simple
+Environment=MODBUS_ADDRESS="192.168.1.10"
+Environment=MODBUS_PORT=502
+Environment=SLAVE=Bheldi_comm
+Environment=PYTHONPATH=/home/pi/ems/sqlite
+WorkingDirectory=/home/pi/ems/modbus
+ExecStart=/usr/bin/python3 ModbusTCPMaster.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
